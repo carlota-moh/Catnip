@@ -19,18 +19,53 @@ print("Hooray! Game loaded correctly")
 """
 
 # Initial settings
+class User:
+    def __init__(self, name):
+        self.name = name
 
-cat_name = input("What's your cat's name? " )
-    
-def name_validation(name):
-    q = input(f"Is {name} correct? (Y/N) ")
-    if q == "N":
-        name = input("What's your cat's name? " )
-        name_validation(name)
-    elif q == 'Y':
-        pass
-    else:
-        print("Sorry, I did not understand you...")
-        name_validation(name)
+    def __repr__(self):
+        return self.name
 
-name_validation(cat_name)
+    def name_validation(self):
+        q = input(f"Is {self.name} correct? (Y/N) ")
+        if q == "N":
+            self.name = input("What's your name? ")
+            self.name_validation()
+        elif q == 'Y':
+            pass
+        else:
+            print("Sorry, I did not understand you...")
+            self.name_validation()
+
+class Cat():
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return self.name
+
+    def name_validation(self):
+        q = input(f"Is {self.name} correct? (Y/N) ")
+        if q == "N":
+            self.name = input("What's your cat's name? ")
+            self.name_validation()
+        elif q == 'Y':
+            pass
+        else:
+            print("Sorry, I did not understand you...")
+            self.name_validation()
+
+
+# Game starts
+
+user = User(name = input("What's your name? "))
+user.name_validation()
+
+print(f"Good morning {user.name} and welcome to Catnip!")
+
+user_cat = Cat(name = input("What's your cat's name? "))
+user_cat.name_validation()
+
+
+
+
